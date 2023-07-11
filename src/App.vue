@@ -1,36 +1,52 @@
 <template>
   <!-- Overlayer Components -->
 
-  <Sidebar v-model:visible="showSideBar"> </Sidebar>
+  <!-- Product Navigation  -->
+  
+  <Sidebar v-model:visible="showSideBar"> 
+  
+ 
+        <Menu :model="items" />
+        <Toast />
+ 
+  
+  </Sidebar>
+  <Sidebar v-model:visible="showAccountPanel" position="right" > </Sidebar>
+
+<!-- Quick Search -->
 
   <Dialog
     position="top"
     v-model:visible="showModal"
     modal
     header="What you looking for?"
-    :style="{ width: '50vw' }"
+    :style="{ width: '75vw' }"
   >
+
+  <div class="flex-col col-gap-4">
+      <Listbox v-model="selectedCity" :options="actions" filter optionLabel="name" class="w-full" />
+  </div>
   </Dialog>
 
+
+<!--  Modal Create  -->
   <Dialog
     position="top"
     v-model:visible="showModalCreate"
     modal
     header="New Application"
-    :style="{ width: '50vw' }"
+    :style="{ width: '80vw' }"
   >
+
+
   </Dialog>
 
-    <div class="card flex justify-content-center">
-        <Button type="button" label="Toggle" @click="toggle" aria-haspopup="true" aria-controls="overlay_menu" />
-        <Menu ref="menu" id="overlay_menu" :model="createActions" :popup="true" />
-        <Toast />
-    </div>
 
-
-  <header class="bg-gray-800 border-b flex p-4 justify-between bg-black">
-    <div class="flex w-full h-none gap-4">
+<Menubar>
+    <template #start>
+        <div class="flex w-full h-none gap-4">
       <Button
+        plain text
         size="small"
         severity="secondary"
         icon="pi pi-bars"
@@ -84,35 +100,60 @@
 
       <span class=" p-input-icon-left">
         <i class="pi pi-search" />
-        <InputText class="w-250px"
+        <InputText 
+          style= "width: 440px"
+          class=""
           @click="showModal = true"
           v-model="value1"
           placeholder="Quick search for anything | ⌘+k"
         />
+       
+
       </span>
     </div>
-
-    <div class="flex justify-items-end gap-2">
-    <Tag icon="pi pi-check" severity="success" value="Success"></Tag>
-      <Button
-        raised
-        size="small"
-        icon="pi pi-plus-circle"
-        @click="showModalCreate = true"
-      />
-      <Button size="small" severity="secondary" icon="pi pi-bell"></Button>
-      <Avatar
-        shape="circle"
-        image="/images/avatar/gab.png"
-        v-badge="99"
-        size="large"
-      />
+    </template>
+    <template #end>
+        <div class="flex justify-items-end gap-2">
+    
+        <Tag icon="pi pi-check" severity="success" value="Success"></Tag>
+          <Button
+            @click="showModalCreate = true"
+            raised
+            size="small"
+            icon="pi pi-plus-circle"
+            
+          />
+          
+          <Divider layout="vertical"/>
+          <Button plain text size="small" severity="secondary" icon="pi pi-bell"></Button>
+          <Button plain text size="small" severity="secondary" icon="pi pi-question-circle"></Button>
+          
+          <Avatar 
+            
+            @click="showAccountPanel = true"
+            shape="circle"
+            image="/images/avatar/gab.png"
+            v-badge="99"
+            size="large"
+          />
     </div>
+    </template>
+
+
+  <header class="bg-gray-900 flex py-4 px-4 justify-between">
+   
+
+    
   </header>
+</MenuBar>
+
+
+<!-- Main Content -->
+<div class="flex-col gap-8">
   <!-- Banner App -->
   <section class="flex-col p-4">
     <div class="">
-      <div class="self-stretch text-gray-200 text-2xl font-normal">
+      <div class="self-stretch text-white text-2xl font-normal">
         Welcome, {{ userName }}
       </div>
       <h1 class="self-stretch text-4xl font-bold">
@@ -123,6 +164,7 @@
     <div class="flex flex-wrap gap-2">
       <Button
         raised
+        @click="showModalCreate = true"
         size="small"
         label="Create Application"
         icon="pi pi-plus-circle"
@@ -153,8 +195,6 @@
 
     <!-- Card Basic -->
 
-    
-
     <div class="flex gap-4 px-4">
         
         <div style="height: 160px" class="w-full flex-col bg-gray-800 gap-2 p-4 shadow-2 border-round">
@@ -168,11 +208,6 @@
         <div style="height: 160px" class="w-full flex-col bg-gray-800 gap-2 p-4 shadow-2 border-round">
         
         </div>
-        
-
-       
-        
-
     </div>
 
     
@@ -200,8 +235,33 @@
     </div>
   </div>
 
-  
+  <div class="flex gap-4 px-4">
+        
+        <div style="height: 160px" class="w-full flex-col bg-gray-800 gap-2 p-4 shadow-2 border-round">
+     
+        </div>
+
+        <div style="height: 160px" class="w-full flex-col bg-gray-800 gap-2 p-4 shadow-2 border-round">
+           
+        </div>
+
+        <div style="height: 160px" class="w-full flex-col bg-gray-800 gap-2 p-4 shadow-2 border-round">
+        
+        </div>
+    </div>
+
+<!-- Template List Teams -->
+
+<div class="flex  flex-col gap-4 p-4">
+    
+</div>
+
+
+</div>
+
+
 </template>
+
 
 <!-- JS   -->
 <script setup>
@@ -213,9 +273,20 @@ import Button from 'primevue/button';
 const showSideBar = ref(false);
 const showModal = ref(false);
 const showModalCreate = ref(false);
+const showAccountPanel = ref(false);
 const userName = ref('userName');
 
-const createActions = ref([
+const selectedCity = ref();
+const actions = ref([
+    { name: 'Create new Application', code: 'NY' },
+    { name: 'My Applications', code: 'RM' },
+    { name: 'Dashboards and Metrics', code: 'LDN' },
+    { name: 'Account Settings', code: 'IST' },
+    { name: 'Marketplace', code: 'IST' },
+]);
+
+
+const items = ref([
     {
         label: 'Options',
         items: [
@@ -235,15 +306,22 @@ const createActions = ref([
             }
         ]
     },
-    
+    {
+        label: 'Navigate',
+        items: [
+            {
+                label: 'Vue Website',
+                icon: 'pi pi-external-link',
+                url: 'https://vuejs.org/'
+            },
+            {
+                label: 'Router',
+                icon: 'pi pi-upload',
+                to: '/fileupload'
+            }
+        ]
+    }
 ]);
-
-const toast = useToast();
-
-const toggle = (event) => {
-    menu.value.toggle(event);
-};
-
 
 
 </script>
