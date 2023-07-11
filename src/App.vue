@@ -32,7 +32,7 @@
       <div class="flex flex-wrap gap-2">
             <Button raised size="small" label="Create Application" icon="pi pi-plus-circle" iconPos="right"/>
             <Button size="small" outlined severity="secondary" icon="pi pi-search" ></Button>
-            <Avatar v-badge="4" icon="pi pi-user" size="xlarge" />
+            <Avatar image="/images/avatar/avatar.jpg" v-badge="99"  size="large" />
         </div>
     </template>
 </Menubar>
