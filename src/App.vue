@@ -1,17 +1,23 @@
 <template>
 
+<!-- Overlayer Components -->
 
-  <Sidebar v-model:visible="visible">
-    
-  </Sidebar>
+    <Sidebar v-model:visible="showSideBar">
 
+    </Sidebar>
 
+    <Dialog position="top" v-model:visible="showModal" modal header="Header" :style="{ width: '50vw' }">
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+</Dialog>
 
-<Menubar :model="items">
+<Menubar class="border p-4" :model="items">
     <template #start>
     
     <div class="flex items-center content-center gap-4">
-          <Button size="small" outlined severity="secondary" icon="pi pi-bars" @click="visible = true"/>
+          <Button size="small" outlined severity="secondary" icon="pi pi-bars" @click="showSideBar=true"/>
 
         <a style="align-self: center" class="flex items-center self-center" href="">
         <svg  width="82" height="16" viewBox="0 0 82 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -23,23 +29,18 @@
         </svg>
         </a>
         </div>
-         
-
-
-
     </template>
     <template #end>
       <div class="flex flex-wrap gap-2">
-            <Button raised size="small" label="Create Application" icon="pi pi-plus-circle" iconPos="right"/>
+            <Button raised size="small" label="Create Application" icon="pi pi-plus-circle" iconPos="right" @click="showModal=true" />
             <Button size="small" outlined severity="secondary" icon="pi pi-search" ></Button>
-            <Avatar circle image="/images/avatar/gab.png" v-badge="99"  size="small" />
+            <Avatar shape="circle" image="/images/avatar/gab.png" v-badge="99"  size="large" />
         </div>
     </template>
 </Menubar>
 
-
 <!-- Banner App -->
-<section class="flex-col p-8">
+<section class="flex-col p-4">
     <div class="">
         <div class="self-stretch text-gray-200 text-2xl font-normal">Welcome, {{userName}} </div>
         <h1 class="self-stretch text-4xl font-bold">Build powerful applications using Edge Computing.</h1>
@@ -55,15 +56,40 @@
 <!-- Section Metrics -->
 <section class="flex-col gap-4">
 
-  <div class="p-8 flex align-items-center gap-4">
+  <div class="p-4 flex align-items-center gap-4">
       <div class="text-white text-xl font-semibold">Real Time Metrics</div>
       <div class="flex gap-2">
       <Button size="small" label="See all Dashbords" icon="pi pi-chevron-right" plain text iconPos="right" /> </div>
   </div>
+
+  <div class="flex flex-col gap-4 p-4">
+    
+    <Card>
+        <template #content>
+            <div class="p-0 h3">Test</div>
+        </template>
+    </Card>
+
+    <Card>
+        <template #content>
+            
+        </template>
+    </Card>
+
+    <Card>
+        <template #content>
+           
+        </template>
+    </Card>
+
+    
+  </div>
 </section>
 
+
+
 <!-- Section Teams -->
-<div class="p-8 flex align-items-center gap-4">
+<div class="p-4 flex align-items-center gap-4">
     <div class="text-xl font-semibold">Teams</div>
     <div class="flex gap-2">
     <Button size="small" label="Invite Member" icon="pi pi-user-plus" plain text iconPos="right" /> </div>
@@ -73,14 +99,17 @@
 
 </template>
 
+<!-- JS   -->
 <script setup>
-import { ref } from 'vue';
-import Button from 'primevue/button';
-const visible = ref ('');
-const visibleLeft = ref(false);
-const visibleRight = ref(false);
-const visibleTop = ref(false);
-const visibleBottom = ref(false);
-const userName = ref ('userName');
 
+// Imports
+    import { ref } from 'vue';
+    import Button from 'primevue/button';
+    
+
+// Variables
+    const showSideBar = ref (false);
+    const showModal = ref (false);
+
+    const userName = ref ('userName');
 </script>
