@@ -13,7 +13,7 @@
     </p>
 </Dialog>
 
-<Menubar class="mx-4 p-2" :model="items">
+<Menubar class="border p-4" :model="items">
     <template #start>
     
     <div class="flex items-center content-center gap-4">
