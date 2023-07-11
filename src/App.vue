@@ -65,18 +65,14 @@
 <section class="flex-col gap-4">
 
   <div class="p-4 flex align-items-center gap-4">
+  <i class="pi pi-check"></i>
       <div class="text-white text-xl font-semibold">Real Time Metrics</div>
-      <div class="flex gap-2">
+
       <Button size="small" label="See all Dashbords" icon="pi pi-chevron-right" plain text iconPos="right" /> </div>
-  </div>
 
 
-
-  <div class="flex grow gap-4 p-4">
-
-  
-    
-        <div class="grow border-solid gap-6 p-4 ">
+<!-- Card Basic -->
+        <div class="grow border-solid border-1 rounded gap-6 p-4 ">
                 <div class="flex-col space-between">
                     <h2 class="h-full w-full text-white text-base font-semibold leading-normal" >Title</h2>
                     <span>Current</span>
@@ -91,7 +87,7 @@
                     <h2>999</h2>
                 </div>
         </div>
-    </div>
+
         
 
     
