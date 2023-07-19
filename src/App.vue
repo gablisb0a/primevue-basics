@@ -44,7 +44,7 @@
 
 <Menubar>
     <template #start>
-        <div class="flex w-full h-none gap-4">
+        <div class="flex h-auto  h-none gap-4">
       <Button
         plain text
         size="small"
@@ -150,6 +150,51 @@
 
 <!-- Main Content -->
 <div class="flex-col gap-8">
+
+<div class="p-4 flex gap-3">
+
+        <div class="flex-col">
+            <h2> Headline 2 </h2> 
+            <p class="m-0">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque
+                quas!
+            </p>
+        </div>
+
+<Card>
+    <template #title> Card</template>
+    <template #content>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque
+            quas!
+        </p>
+    </template>
+
+    <template #footer> 
+      <Button
+        raised
+        @click="showModalCreate = true"
+        size="small"
+        label="Create Application"
+        icon="pi pi-plus-circle"
+        iconPos="right"
+      />
+    
+    </template>
+</Card>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
   <!-- Banner App -->
   <section class="flex-col p-4">
     <div class="">

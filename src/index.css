@@ -8,7 +8,7 @@ body {
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #000000;
+  background-color: var(--surface-ground);
 }
 
 :root {
@@ -51,9 +51,9 @@ body {
     --content-padding: 1.25rem;
     --inline-spacing: 0.5rem;
     --border-radius: 4px;
-    --surface-ground: #040d19;
+    --surface-ground: #1C1C1C;
     --surface-section: #040d19;
-    --surface-card: #071426;
+    --surface-card: #232323;
     --surface-overlay: #071426;
     --surface-border: #0b213f;
     --surface-hover: rgba(255, 255, 255, 0.03);
@@ -67,12 +67,12 @@ body {
     box-sizing: border-box;
   }
   .p-component {
-    font-family: 'Roboto';
+    font-family: var(--font-family);
     font-size: 1rem;
     font-weight: normal;
   }
   .p-component-overlay {
-    background-color: rgba(0, 0, 0, 0.4);
+    background: rgba(30, 30, 30, 0.60);
     transition-duration: 0.2s;
   }
   .p-disabled,
@@ -94,7 +94,7 @@ body {
   }
   .p-link {
     font-size: 1rem;
-    font-family: 'Roboto';
+    font-family: var(--font-family);
     border-radius: 4px;
   }
   .p-link:focus {
@@ -4322,30 +4322,34 @@ body {
     margin-bottom: 4px;
   }
   .p-card {
-    background: #071426;
-    color: #f4f4f4;
-    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2),
-      0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
-    border-radius: 4px;
+    border-radius: 8px;
+    border: 1px solid #3E3E3E;
+    background: var(--surface-card);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.04);
   }
   .p-card .p-card-body {
-    padding: 1.25rem;
+    padding: 24px;
   }
   .p-card .p-card-title {
     font-size: 1.5rem;
     font-weight: 700;
-    margin-bottom: 0.5rem;
+    padding-bottom:24px;
+    border-bottom: 1px solid #3E3E3E;
+    background: #242424;
   }
   .p-card .p-card-subtitle {
     font-weight: 400;
-    margin-bottom: 0.5rem;
+    padding: 24px;
     color: #c6c6c6;
   }
   .p-card .p-card-content {
-    padding: 1.25rem 0;
+    padding: 24px 0;
+    background: #202020;
   }
   .p-card .p-card-footer {
-    padding: 1.25rem 0 0 0;
+    padding: 24px 0 0 0;
+    border-top: 1px solid #3E3E3E;
+    background: #242424;
   }
   .p-fieldset {
     border: 1px solid #0b213f;
@@ -4624,7 +4628,8 @@ body {
     box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2),
       0px 24px 38px 3px rgba(0, 0, 0, 0.14),
       0px 9px 46px 8px rgba(0, 0, 0, 0.12);
-    border: 1px solid var(--gray-700);
+    border: none;
+
   }
   .p-dialog .p-dialog-header {
     border-bottom: 0 none;
@@ -4738,10 +4743,9 @@ body {
     top: 0px;
     left: 0px;
     color: #f4f4f4;
-    border: 1px solid var(--gray-700);
-    box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2),
-      0px 24px 38px 3px rgba(0, 0, 0, 0.14),
-      0px 9px 46px 8px rgba(0, 0, 0, 0.12);
+    border: none;
+
+
   }
   .p-sidebar .p-sidebar-header {
     padding: 1.25rem;
